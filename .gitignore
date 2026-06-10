@@ -1,0 +1,10 @@
+venv/
+.env
+__pycache__/
+*.pyc
+data/reports/*
+data/competitors/*
+!data/.gitkeep
+data/rivalscan.db
+.pytest_cache/
+alembic.ini
