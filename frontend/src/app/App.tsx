@@ -875,7 +875,7 @@ export default function App() {
         >
           <div className="flex items-center gap-3">
             <div className="size-6 bg-primary rounded-md flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs" style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1rem' }}>R</span>
+              <span className="text-primary-foreground font-bold text-xs" style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1rem' }}>E</span>
             </div>
           </div>
         </button>
