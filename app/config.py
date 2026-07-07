@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     groq_api_key: str = ""
-    database_url: str = "sqlite:///./data/rivalscan.db"
+    database_url: str = "sqlite:///./data/echointel.db"
     search_api_key: str = ""
     smtp_host: str = ""
     smtp_port: int = 587

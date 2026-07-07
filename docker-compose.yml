@@ -11,7 +11,7 @@ services:
       - ./data:/app/data
       - ./test.db:/app/test.db
     environment:
-      - DATABASE_URL=sqlite:///./data/rivalscan.db
+      - DATABASE_URL=sqlite:///./data/echointel.db
       - GROQ_API_KEY=${GROQ_API_KEY}
       - SEARCH_API_KEY=${SEARCH_API_KEY}
 

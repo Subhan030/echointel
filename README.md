@@ -1,5 +1,5 @@
 ---
-title: RivalScan API
+title: EchoIntel API
 emoji: 🚀
 colorFrom: indigo
 colorTo: purple
@@ -7,9 +7,9 @@ sdk: docker
 app_port: 7860
 ---
 
-# RivalScan - Agentic Competitive Intelligence
+# EchoIntel - Agentic Competitive Intelligence
 
-RivalScan is a multi-agent system (Planner, Researcher, Analyzer, Strategist, Reporter) orchestrated via a LangGraph workflow to perform deep competitive intelligence research on any given company domain. It features a robust FastAPI backend with automated scheduled checks, structured logging, PDF report generation, and a modern React + Vite dashboard powered by Tailwind CSS.
+EchoIntel is a multi-agent system (Planner, Researcher, Analyzer, Strategist, Reporter) orchestrated via a LangGraph workflow to perform deep competitive intelligence research on any given company domain. It features a robust FastAPI backend with automated scheduled checks, structured logging, PDF report generation, and a modern React + Vite dashboard powered by Tailwind CSS.
 
 ## Architecture
 

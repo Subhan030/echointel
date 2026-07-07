@@ -345,7 +345,7 @@ function CompetitorListView({
             className="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-500 mb-3 pb-2" 
             style={{ fontFamily: "'Dancing Script', cursive", filter: "drop-shadow(0 2px 4px rgba(79, 70, 229, 0.2))" }}
           >
-            RivalScan
+            EchoIntel
           </h1>
           <p className="text-sm text-muted-foreground">
             {competitors.length} competitors tracked &mdash; research runs on demand
