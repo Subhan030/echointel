@@ -2,29 +2,29 @@
 
 :root {
   --font-size: 15px;
-  --background: #FAFAFB;
-  --foreground: #111827;
-  --card: rgba(255, 255, 255, 0.7);
-  --card-foreground: #111827;
-  --popover: rgba(255, 255, 255, 0.9);
-  --popover-foreground: #111827;
-  --primary: #4F46E5;
+  --background: #F5F3E9;
+  --foreground: #2A2626;
+  --card: rgba(253, 252, 248, 0.7);
+  --card-foreground: #2A2626;
+  --popover: rgba(253, 252, 248, 0.9);
+  --popover-foreground: #2A2626;
+  --primary: #1B4332;
   --primary-foreground: #FFFFFF;
-  --secondary: #F3F4F6;
-  --secondary-foreground: #1F2937;
-  --muted: #F3F4F6;
+  --secondary: #EBE8DD;
+  --secondary-foreground: #2A2626;
+  --muted: #EBE8DD;
   --muted-foreground: #6B7280;
-  --accent: #EEF2FF;
-  --accent-foreground: #4338CA;
-  --destructive: #EF4444;
+  --accent: #EBE8DD;
+  --accent-foreground: #2A2626;
+  --destructive: #059669;
   --destructive-foreground: #FFFFFF;
-  --border: rgba(17, 24, 39, 0.08);
-  --input: rgba(17, 24, 39, 0.04);
+  --border: rgba(42, 38, 38, 0.08);
+  --input: rgba(42, 38, 38, 0.04);
   --input-background: rgba(255, 255, 255, 0.5);
   --switch-background: #D1D5DB;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: rgba(79, 70, 229, 0.4);
+  --ring: rgba(27, 67, 50, 0.4);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -79,6 +79,9 @@
 }
 
 @theme inline {
+  --font-sans: 'Manrope', sans-serif;
+  --font-serif: 'Lora', serif;
+  --font-mono: 'Space Mono', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -126,6 +129,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
 
   /**
@@ -188,5 +192,10 @@
 }
 
 .bg-background {
-  background: linear-gradient(135deg, #FAFAFB 0%, #F5F7FA 50%, #EEF2FF 100%);
+  background-color: var(--background);
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
 }
