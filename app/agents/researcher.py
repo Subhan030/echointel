@@ -11,7 +11,7 @@ class ResearchSummary(BaseModel):
 def get_researcher_llm():
     if not settings.groq_api_key:
         raise ValueError("GROQ_API_KEY is not set")
-    return ChatGroq(temperature=0, model="llama-3.3-70b-versatile", api_key=settings.groq_api_key) 
+    return ChatGroq(temperature=0, model="llama-3.1-8b-instant", api_key=settings.groq_api_key) 
 
 def run_researcher(task: str, findings: str) -> ResearchSummary:
     llm = get_researcher_llm()

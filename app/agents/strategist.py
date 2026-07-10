@@ -14,7 +14,7 @@ class StrategistOutput(BaseModel):
 def get_strategist_llm():
     if not settings.groq_api_key:
         raise ValueError("GROQ_API_KEY is not set")
-    return ChatGroq(temperature=0.4, model="llama-3.3-70b-versatile", api_key=settings.groq_api_key) 
+    return ChatGroq(temperature=0.4, model="gemma2-9b-it", api_key=settings.groq_api_key) 
 
 def run_strategist(insights: str) -> StrategistOutput:
     try:

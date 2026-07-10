@@ -14,7 +14,7 @@ class AnalyzerOutput(BaseModel):
 def get_analyzer_llm():
     if not settings.groq_api_key:
         raise ValueError("GROQ_API_KEY is not set")
-    return ChatGroq(temperature=0.2, model="llama-3.3-70b-versatile", api_key=settings.groq_api_key) 
+    return ChatGroq(temperature=0.2, model="mixtral-8x7b-32768", api_key=settings.groq_api_key) 
 
 def run_analyzer(synthesized_findings: str) -> AnalyzerOutput:
     try:

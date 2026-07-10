@@ -14,7 +14,7 @@ class ResearchPlan(BaseModel):
 def get_planner_llm():
     if not settings.groq_api_key:
         raise ValueError("GROQ_API_KEY is not set")
-    return ChatGroq(temperature=0, model="llama-3.3-70b-versatile", api_key=settings.groq_api_key) 
+    return ChatGroq(temperature=0, model="deepseek-r1-distill-llama-70b", api_key=settings.groq_api_key) 
 
 def run_planner(competitor_name: str, competitor_domain: str) -> ResearchPlan:
     try:
