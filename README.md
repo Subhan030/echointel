@@ -1,15 +1,7 @@
----
-title: EchoIntel API
-emoji: 🚀
-colorFrom: indigo
-colorTo: purple
-sdk: docker
-app_port: 7860
----
 
 # EchoIntel - Agentic Competitive Intelligence
 
-EchoIntel is a multi-agent system (Planner, Researcher, Analyzer, Strategist, Reporter) orchestrated via a LangGraph workflow to perform deep competitive intelligence research on any given company domain. It features a robust FastAPI backend with automated scheduled checks, structured logging, PDF report generation, and a modern React + Vite dashboard powered by Tailwind CSS.
+EchoIntel is a multi-agent system (Planner, Researcher, Analyzer, Strategist, Reporter) orchestrated via a LangGraph workflow to perform deep competitive intelligence research on any given company domain. It features a robust FastAPI backend with automated scheduled checks, structured logging, and a modern React + Vite dashboard powered by Tailwind CSS.
 
 ## Architecture
 
@@ -32,16 +24,16 @@ graph TD
         end
         
         Graph -.->|Saves| Store
-        Graph -.->|Generates| PDF[Report PDF Exporter]
+
     end
 ```
 
 ## Features
 - Agentic Workflow: Specialized agents handling planning, web research, insights extraction, and strategic recommendations.
 - Robust Tooling: Web search wrappers with graceful error handling and retry mechanisms.
-- Full-Stack Application: A polished dark-mode UI built with Tailwind, consuming a rate-limited and resilient FastAPI service.
+- Full-Stack Application: A polished light-mode 'Oat & Emerald' UI built with Tailwind, consuming a rate-limited and resilient FastAPI service.
 - Periodic Checks: Built-in APScheduler runs automatic background refresh jobs for tracked competitors.
-- PDF Export: Auto-generated nicely formatted PDF reports for executive distribution.
+
 - In-Memory Persistence: Extremely fast and simple in-memory data store for simplified deployment.
 
 ## Setup Instructions
@@ -51,6 +43,12 @@ Create a `.env` file in the root directory:
 ```
 GROQ_API_KEY=your_groq_api_key_here
 SEARCH_API_KEY=your_search_api_key_here
+
+# Optional: For email reporting functionality
+SMTP_HOST=your_smtp_host
+SMTP_PORT=587
+SMTP_USER=your_smtp_user
+SMTP_PASSWORD=your_smtp_password
 ```
 
 ### 2. Running with Docker Compose (Recommended)

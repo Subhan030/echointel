@@ -18,7 +18,7 @@ from app.crud.job import create_job, get_job
 from app.crud.report import get_report, get_reports_by_competitor
 from app.graph.workflow import run_pipeline
 from app.logger import setup_logging, request_id_var
-from app.utils.pdf import generate_report_pdf
+
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -131,21 +131,4 @@ def get_report_detail(report_id: int):
 def list_competitor_reports(competitor_id: int):
     return get_reports_by_competitor(competitor_id)
 
-@app.get("/reports/{report_id}/pdf")
-@limiter.limit("10/minute")
-def download_report_pdf(request: Request, report_id: int):
-    rep = get_report(report_id)
-    if not rep:
-        raise HTTPException(status_code=404, detail="Report not found")
-    
-    comp = get_competitor(rep.competitor_id)
-    if not comp:
-        raise HTTPException(status_code=404, detail="Competitor not found")
-    
-    os.makedirs("data/reports", exist_ok=True)
-    file_path = f"data/reports/report_{report_id}.pdf"
-    
-    if not os.path.exists(file_path):
-        generate_report_pdf(rep, comp, file_path)
-        
-    return FileResponse(file_path, media_type='application/pdf', filename=f"{comp.name}_Report_{report_id}.pdf")
+
