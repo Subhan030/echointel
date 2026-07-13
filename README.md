@@ -1,11 +1,4 @@
----
-title: Rivalscan API
-emoji: 🚀
-colorFrom: blue
-colorTo: indigo
-sdk: docker
-pinned: false
----
+
 
 # EchoIntel - Agentic Competitive Intelligence
 
