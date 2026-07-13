@@ -33,7 +33,6 @@ graph TD
 - Robust Tooling: Web search wrappers with graceful error handling and retry mechanisms.
 - Full-Stack Application: A polished light-mode 'Oat & Emerald' UI built with Tailwind, consuming a rate-limited and resilient FastAPI service.
 - Periodic Checks: Built-in APScheduler runs automatic background refresh jobs for tracked competitors.
-
 - In-Memory Persistence: Extremely fast and simple in-memory data store for simplified deployment.
 
 ## Setup Instructions

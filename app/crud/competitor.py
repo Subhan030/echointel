@@ -20,3 +20,6 @@ def update_competitor(competitor_id: int, update_data: dict) -> Optional[Competi
         for key, value in update_data.items():
             setattr(comp, key, value)
     return comp
+
+def delete_competitor(competitor_id: int) -> bool:
+    return store.delete_competitor(competitor_id)

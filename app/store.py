@@ -72,6 +72,18 @@ class Store:
             self.reports[report.id] = report
             job.report_id = report.id
 
+    def delete_competitor(self, competitor_id: int) -> bool:
+        if competitor_id in self.competitors:
+            del self.competitors[competitor_id]
+            jobs_to_delete = [j_id for j_id, j in self.jobs.items() if j.competitor_id == competitor_id]
+            for j_id in jobs_to_delete:
+                del self.jobs[j_id]
+            reports_to_delete = [r_id for r_id, r in self.reports.items() if r.competitor_id == competitor_id]
+            for r_id in reports_to_delete:
+                del self.reports[r_id]
+            return True
+        return False
+
     def next_competitor_id(self) -> int:
         curr = self._competitor_id
         self._competitor_id += 1

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { api } from "../api";
 import {
   Search, CheckCircle2, AlertCircle, Loader2, FileText,
-  ChevronDown, ChevronUp, Play, Zap, Target, Shield, BarChart3, TrendingUp, ExternalLink
+  ChevronDown, ChevronUp, Play, Zap, Target, Shield, BarChart3, TrendingUp, ExternalLink, X
 } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -190,6 +190,20 @@ export default function App() {
     });
   }, []);
 
+  const handleDeleteCompetitor = async (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    try {
+      await api.deleteCompetitor(Number(id));
+      setCompetitors(prev => prev.filter(c => c.id !== id));
+      if (activeCompetitorId === id) {
+        setActiveCompetitorId(null);
+        setInputValue("");
+      }
+    } catch (err) {
+      console.error("Failed to delete competitor:", err);
+    }
+  };
+
   const runPipeline = useCallback(async (compIdToRun?: string) => {
     let targetId = compIdToRun;
     
@@ -366,6 +380,7 @@ export default function App() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && !isRunning && runPipeline()}
+                autoComplete="off"
               />
             </div>
             
@@ -380,13 +395,23 @@ export default function App() {
             <div className="flex items-center gap-3 flex-wrap">
               <span className="text-xs font-mono text-muted-foreground/60 uppercase tracking-widest mr-2">Suggestions:</span>
               {competitors.slice(0, 5).map(c => (
-                <button 
+                <div 
                   key={c.id}
-                  onClick={() => handleSuggestionClick(c)}
-                  className={`px-4 py-2 rounded-full border text-sm transition-colors ${activeCompetitorId === c.id ? 'border-primary bg-primary/5 text-primary' : 'border-border/60 text-muted-foreground hover:bg-muted/50 hover:text-foreground'}`}
+                  className={`flex items-center rounded-full border text-sm transition-colors ${activeCompetitorId === c.id ? 'border-primary bg-primary/5 text-primary' : 'border-border/60 text-muted-foreground hover:bg-muted/50 hover:text-foreground'}`}
                 >
-                  {c.name}
-                </button>
+                  <button 
+                    onClick={() => handleSuggestionClick(c)}
+                    className="px-4 py-2"
+                  >
+                    {c.name}
+                  </button>
+                  <button 
+                    onClick={(e) => handleDeleteCompetitor(e, c.id)}
+                    className="pr-3 py-2 text-muted-foreground/50 hover:text-destructive transition-colors"
+                  >
+                    <X className="size-3" />
+                  </button>
+                </div>
               ))}
               {competitors.length === 0 && <span className="text-xs text-muted-foreground">No competitors yet. Add one above!</span>}
             </div>

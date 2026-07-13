@@ -13,7 +13,7 @@ from slowapi.errors import RateLimitExceeded
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from app.schemas import CompetitorCreate, CompetitorResponse, JobResponse, ReportResponse
-from app.crud.competitor import create_competitor, get_competitors, get_competitor
+from app.crud.competitor import create_competitor, get_competitors, get_competitor, delete_competitor
 from app.crud.job import create_job, get_job
 from app.crud.report import get_report, get_reports_by_competitor
 from app.graph.workflow import run_pipeline
@@ -93,6 +93,13 @@ def get_competitor_detail(competitor_id: int):
     if not comp:
         raise HTTPException(status_code=404, detail="Competitor not found")
     return comp
+
+@app.delete("/competitors/{competitor_id}")
+def remove_competitor(competitor_id: int):
+    success = delete_competitor(competitor_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Competitor not found")
+    return {"status": "success"}
 
 @app.post("/competitors/{competitor_id}/run", response_model=JobResponse)
 @limiter.limit("5/minute")

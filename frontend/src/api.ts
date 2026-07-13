@@ -53,6 +53,13 @@ export const api = {
     return res.json();
   },
   
+  deleteCompetitor: async (id: number): Promise<void> => {
+    const res = await fetch(`${API_BASE}/competitors/${id}`, {
+      method: 'DELETE'
+    });
+    if (!res.ok) throw new Error('Failed to delete competitor');
+  },
+  
   runPipeline: async (id: number): Promise<Job> => {
     const res = await fetch(`${API_BASE}/competitors/${id}/run`, { method: 'POST' });
     if (!res.ok) throw new Error('Failed to trigger run');
