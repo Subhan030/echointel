@@ -12,7 +12,7 @@ def create_competitor(competitor_data: dict) -> Competitor:
     comp_id = store.next_competitor_id()
     new_comp = Competitor(id=comp_id, **competitor_data)
     store.competitors[comp_id] = new_comp
-    return new_comp
+    return new_comp  
 
 def update_competitor(competitor_id: int, update_data: dict) -> Optional[Competitor]:
     comp = get_competitor(competitor_id)

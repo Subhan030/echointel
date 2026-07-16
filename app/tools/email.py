@@ -12,7 +12,7 @@ def send_email(to_email: str, subject: str, content: str):
     msg['Subject'] = subject
     msg['From'] = settings.smtp_user
     msg['To'] = to_email
-    
+     
     server = smtplib.SMTP(settings.smtp_host, settings.smtp_port)
     server.starttls()
     server.login(settings.smtp_user, settings.smtp_password)
